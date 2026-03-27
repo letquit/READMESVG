@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-label="Glitch text">
+  <defs>
+    <style>
+      .bg { fill: #000; }
+      .scan { fill: #000; opacity: 0.12; }
+
+      .txt {
+        font-family: "Courier New", monospace;
+        font-size: 96px;
+        font-weight: 700;
+        dominant-baseline: middle;
+      }
+
+      .r { fill: #ff2b2b; opacity: 0.85; filter: url(#blur2); }
+      .g { fill: #2bff62; opacity: 0.85; filter: url(#blur2); }
+      .b { fill: #2b74ff; opacity: 0.85; filter: url(#blur1); }
+      .w { fill: #fff; filter: url(#blur1); }
+      .glow { fill: rgba(255,255,255,0.35); filter: url(#blur15); }
+
+      .flicker { animation: flicker 0.03s infinite; }
+      .jerk { animation: jerk 0.05s infinite; }
+      .jr { animation: jerkR 1s infinite; }
+      .jg { animation: jerkG 1s infinite; }
+      .jb { animation: jerkB 1s infinite; }
+      .whole { animation: whole 5s infinite; transform-origin: 500px 180px; }
+
+      @keyframes flicker {
+        0% { opacity: 0.82; }
+        50% { opacity: 1; }
+        100% { opacity: 0.82; }
+      }
+      @keyframes jerk {
+        50% { transform: translateX(1px); }
+        51% { transform: translateX(0); }
+      }
+      @keyframes jerkR {
+        0%,30%,32%,98% { transform: translateX(-2px); }
+        31%,100% { transform: translateX(-12px); }
+      }
+      @keyframes jerkG {
+        0%,30%,32%,98% { transform: translateX(2px); }
+        31%,100% { transform: translateX(12px); }
+      }
+      @keyframes jerkB {
+        0%,30%,32%,98% { transform: translateX(0); }
+        31%,100% { transform: translateX(10px); }
+      }
+      @keyframes whole {
+        0%,39%,43%,100% { transform: translate(0,0) skewX(0deg) scale(1,1); opacity: 1; }
+        41% { transform: translate(-40px,0) skewX(20deg) scale(1,1.08); opacity: 0.9; }
+        42% { transform: translate(40px,0) skewX(-25deg) scale(1,1.08); opacity: 0.9; }
+      }
+    </style>
+
+    <filter id="blur1"><feGaussianBlur stdDeviation="1"/></filter>
+    <filter id="blur2"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="blur15"><feGaussianBlur stdDeviation="15"/></filter>
+
+    <!-- 单一文本源：只改这里 -->
+    <symbol id="glitchText" overflow="visible">
+      <!--
+        x=90 起点，留白后可用宽度约 820（到 910）
+        textLength=820 => 超长时自动压缩字宽，保证不溢出
+      -->
+      <text id="mainText"
+            class="txt"
+            x="90" y="180"
+            textLength="820"
+            lengthAdjust="spacingAndGlyphs">
+        测试测试123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ这是一段很长很长的文字...
+      </text>
+    </symbol>
+  </defs>
+
+  <rect class="bg" width="100%" height="100%"/>
+
+  <!-- scanlines -->
+  <g>
+    <rect class="scan" x="0" y="20" width="1000" height="4"/>
+    <rect class="scan" x="0" y="52" width="1000" height="4"/>
+    <rect class="scan" x="0" y="84" width="1000" height="4"/>
+    <rect class="scan" x="0" y="116" width="1000" height="4"/>
+    <rect class="scan" x="0" y="148" width="1000" height="4"/>
+    <rect class="scan" x="0" y="180" width="1000" height="4"/>
+    <rect class="scan" x="0" y="212" width="1000" height="4"/>
+    <rect class="scan" x="0" y="244" width="1000" height="4"/>
+    <rect class="scan" x="0" y="276" width="1000" height="4"/>
+    <rect class="scan" x="0" y="308" width="1000" height="4"/>
+  </g>
+
+  <g class="whole flicker jerk">
+    <use href="#glitchText" class="r jr"/>
+    <use href="#glitchText" class="g jg"/>
+    <use href="#glitchText" class="b jb"/>
+    <use href="#glitchText" class="w"/>
+    <use href="#glitchText" class="glow"/>
+  </g>
+</svg>
