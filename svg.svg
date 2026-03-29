@@ -56,18 +56,13 @@
     <filter id="blur2"><feGaussianBlur stdDeviation="2"/></filter>
     <filter id="blur15"><feGaussianBlur stdDeviation="15"/></filter>
 
-    <!-- 单一文本源：只改这里 -->
     <symbol id="glitchText" overflow="visible">
-      <!--
-        x=90 起点，留白后可用宽度约 820（到 910）
-        textLength=820 => 超长时自动压缩字宽，保证不溢出
-      -->
       <text id="mainText"
             class="txt"
             x="90" y="180"
             textLength="820"
             lengthAdjust="spacingAndGlyphs">
-        逃げちゃダメだ、逃げちゃダメだ、逃げちゃダメだ
+        ネットは広大だわ
       </text>
     </symbol>
   </defs>
